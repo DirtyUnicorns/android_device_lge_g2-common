@@ -254,6 +254,9 @@ PRODUCT_PACKAGES += \
         loki_patch \
         loki_flash
 
+PRODUCT_PACKAGES += \
+	libion
+
 PRODUCT_PROPERTY_OVERRIDES += \
 	mm.enable.smoothstreaming=true
 
