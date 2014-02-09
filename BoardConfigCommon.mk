@@ -136,6 +136,8 @@ BOARD_SEPOLICY_UNION := \
 
 HAVE_ADRENO_SOURCE:= false
 
+TARGET_PROVIDES_LIBLIGHT := true
+
 BOARD_NFC_HAL_SUFFIX := g2
 
 BOARD_RIL_CLASS := ../../../device/lge/g2-common/ril/
