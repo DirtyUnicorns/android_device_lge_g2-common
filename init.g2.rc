@@ -40,6 +40,9 @@ on init
     mkdir /sns 0775 system system
     mkdir /sns/cal 0771 system system
 
+    # Prevents permission denied error for telephony
+    chmod 0644 /proc/cmdline
+
 on fs
     mount_all ./fstab.g2
     write /sys/kernel/boot_adsp/boot 1
@@ -137,8 +140,6 @@ on boot
     chmod 0644 /proc/bluetooth/sleep/btwrite
     chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
-    restorecon /proc/bluetooth/sleep/lpm
-    restorecon /proc/bluetooth/sleep/btwrite
 
 # lights perms
     chown system system /sys/class/leds/red/brightness
@@ -166,14 +167,10 @@ on post-fs-data
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
-    mkdir /data/misc/playready
-    restorecon /data/misc/playready
-    mkdir /data/misc/tzapps
-    restorecon /data/misc/tzapps
-
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
+    # Workaround for conn_init not copying the updated firmware
     # Make sure the default firmware is loaded
     write /sys/module/bcmdhd/parameters/firmware_path "/system/etc/firmware/fw_bcmdhd.bin"
 
@@ -200,7 +197,6 @@ on post-fs-data
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
     write /data/system/sensors/settings 1
-    restorecon /data/system/sensors/settings
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
@@ -291,9 +287,6 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/tspdrv/nforce_timed
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    restorecon /sys/devices/platform/tspdrv/nforce_timed
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
 
 on charger
     # Booting modem
@@ -428,6 +421,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
+    oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
