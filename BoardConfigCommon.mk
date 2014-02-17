@@ -144,6 +144,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/lge/g2-common/releasetools
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
 BOARD_USES_QC_TIME_SERVICES := true
 
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
