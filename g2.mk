@@ -264,6 +264,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
+# msm_rng entropy feeder
+PRODUCT_PACKAGES += \
+        qrngd \
+        qrngp
+
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 ## These values are still too low and cause cache corruption. Use the hammerhead's
