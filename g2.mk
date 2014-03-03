@@ -125,7 +125,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=255 \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=false \
-    av.offload.enable=true
+    av.offload.enable=true \
+    ro.config.vc_call_vol_steps=12 \
+    ro.config.vc_call_vol_default=8
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
