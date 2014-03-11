@@ -43,6 +43,13 @@ on init
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
 
+on late-init
+    write /proc/sys/kernel/sched_latency_ns 10000000
+    write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
+    write /proc/sys/kernel/randomize_va_space 2
+    write /dev/cpuctl/apps/bg_non_interactive/cpu.shares 52
+    write /dev/cpuctl/apps/bg_non_interactive/cpu.rt_runtime_us 700000
+
 on fs
     mount_all ./fstab.g2
     write /sys/kernel/boot_adsp/boot 1
