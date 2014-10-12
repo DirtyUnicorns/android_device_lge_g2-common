@@ -21,11 +21,9 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := \
-    normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-PRODUCT_AAPT_PREF_CONFIG := \
-    xxhdpi
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.g2.rc:root/init.g2.rc \
@@ -33,42 +31,43 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ueventd.g2.rc:root/ueventd.g2.rc \
     $(LOCAL_PATH)/fstab.g2:root/fstab.g2
 
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermald-8974.conf:system/etc/thermald-8974.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-8974-default.conf:system/etc/thermal-engine-8974-default.conf
+    $(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+	frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+	frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+	frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
+	frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.thermal=thermal-engine
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -106,171 +105,125 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=480 \
-    ro.opengles.version=196608
+        ro.sf.lcd_density=480 \
+	ro.opengles.version=196608 \
+	ro.loki_enabled=1
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.handset.mic=digital \
-    persist.audio.voicecall.mic=0 \
-    persist.audio.voice.clarity=none \
-    persist.audio.aanc.enable=false \
-    persist.audio.handset_rx_type=DEFAULT \
-    persist.audio.nsenabled=ON \
-    persist.speaker.prot.enable=false \
-    persist.audio.spkcall_2mic=OFF \
-    af.resampler.quality=255 \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=false \
-    av.offload.enable=true \
-    ro.config.vc_call_vol_steps=12 \
-    ro.config.vc_call_vol_default=8
+	persist.audio.fluence.voicecall=true \
+	persist.audio.dualmic.config=endfire \
+	af.resampler.quality=4
+
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1
+	persist.radio.apm_sim_not_pwdn=1
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0
-
-# Read value of network mode from NV
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.mode_pref_nv10=1
+	ro.telephony.call_ring.multiple=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=LgeLteRIL \
-    ro.telephony.ril.v3=qcomdsds
-
-# update 1x signal strength after 2s
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.radio.snapshot_enabled=1 \
-    persist.radio.snapshot_timer=2
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.radio.use_cc_names=true
-
-# Request modem to send PLMN name always irrespective
-# of display condition in EFSPN.
-# RIL uses this property.
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.always_send_plmn=true
+	ro.telephony.ril_class=LgeLteRIL \
+	ro.telephony.ril.v3=qcomdsds
 
 #Upto 3 layers can go through overlays
 PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
-PRODUCT_TAGS += \
-    dalvik.gc.type-precise
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
+	librs_jni \
+	com.android.future.usb.accessory
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    e2fsck
+	e2fsck
 
 PRODUCT_PACKAGES += \
-    libgenlock \
-    liboverlay \
-    hwcomposer.msm8974 \
-    gralloc.msm8974 \
-    copybit.msm8974 \
-    memtrack.msm8974
+	libgenlock \
+	liboverlay \
+	hwcomposer.msm8974 \
+	gralloc.msm8974 \
+	copybit.msm8974 \
+	memtrack.msm8974
 
 # Local wrapper for fixups
 PRODUCT_PACKAGES += \
-    camera.g2
+	camera.g2
 
 PRODUCT_PACKAGES += \
-    audio.primary.msm8974 \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libaudio-resampler
+	audio_policy.default \
+	audio.primary.msm8974 \
+	audio.a2dp.default \
+	audio.usb.default \
+	audio.r_submix.default \
+	libaudio-resampler
 
 PRODUCT_PACKAGES += \
-    libmm-omxcore \
-    libdivxdrmdecrypt \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxCore \
-    libstagefrighthw \
-    libc2dcolorconvert
+        libmm-omxcore \
+	libdivxdrmdecrypt \
+	libOmxVdec \
+	libOmxVenc \
+	libOmxCore \
+	libstagefrighthw \
+	libc2dcolorconvert
 
 PRODUCT_PACKAGES += \
-    libloc_adapter \
-    libloc_eng \
-    libloc_api_v02 \
-    libgps.utils \
-    gps.msm8974
+	libloc_adapter \
+	libloc_eng \
+	libloc_api_v02 \
+	libgps.utils \
+	gps.msm8974
 
 PRODUCT_PACKAGES += \
-    hwaddrs
+	hwaddrs
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/vendor/lib/libril-qc-qmi-1.so
+	rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
+	drm.service.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bt.bdaddr_path=/data/misc/bdaddr
+	ro.bt.bdaddr_path=/data/misc/bdaddr
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=120
+	wifi.interface=wlan0 \
+	wifi.supplicant_scan_interval=15
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.recordable.rgba8888=1
+        debug.egl.recordable.rgba8888=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sensors.wl_dis=true
-
-# Setup custom emergency number list based on the MCC. This is needed by RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.custom_ecc=1
+	ro.qualcomm.sensors.qmd=true \
+	ro.qc.sdk.sensors.gestures=true \
+	ro.qualcomm.sensors.pedometer=true \
+	ro.qualcomm.sensors.pam=true \
+	ro.qualcomm.sensors.scrn_ortn=true \
+	debug.qualcomm.sns.hal=1 \
+	debug.qualcomm.sns.daemon=1 \
+	debug.qualcomm.sns.libsensor1=e
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+	persist.sys.usb.config=mtp
 
 PRODUCT_PACKAGES += \
-    lights.g2
+        lights.g2
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
-
-# Input resampling configuration
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.input.noresample=1
+        $(LOCAL_PATH)/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
 # This hw ships locked, work around it with loki
 PRODUCT_PACKAGES += \
-    loki.sh \
-    loki_patch \
-    loki_flash
-
-PRODUCT_PACKAGES += \
-    libion
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true
-
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
-
-# msm_rng entropy feeder
-PRODUCT_PACKAGES += \
-    qrngd \
-    qrngp
+        loki.sh \
+        loki_tool_static_g2 \
+        recovery-transform.sh
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
@@ -289,14 +242,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_width=2048 \
     ro.hwui.text_large_cache_height=1024
 
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+
 # Disregard the firmware, go straight for the confs...
 #$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4335/device-bcm.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 $(call inherit-product-if-exists, hardware/qcom/msm8x74/msm8x74.mk)
 
-## Omni-specific stuff
-
-# OmniTorch
+# Omni
 PRODUCT_PACKAGES += \
     OmniTorch
+

@@ -44,7 +44,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel information
 BOARD_KERNEL_BASE     := 0x00000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rtb.filter=0x0 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rtb.filter=0x0
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x05000000 --tags_offset 0x04800000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -79,9 +79,7 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
-#BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DLG_CAMERA_HARDWARE -DLPA_DEFAULT_BUFFER_SIZE=512
-#-DQCOM_BSP -DQCOM_HARDWARE
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
 # Camera
@@ -119,8 +117,6 @@ TARGET_NO_RPC := true
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-BOARD_HARDWARE_CLASS := device/lge/g2-common/cmhw/
-
 BOARD_SEPOLICY_DIRS += \
         device/lge/g2-common/sepolicy
 
@@ -129,10 +125,6 @@ BOARD_SEPOLICY_UNION := \
        device.te \
        app.te \
        file_contexts
-
-HAVE_ADRENO_SOURCE:= false
-
-TARGET_PROVIDES_LIBLIGHT := true
 
 BOARD_NFC_HAL_SUFFIX := g2
 

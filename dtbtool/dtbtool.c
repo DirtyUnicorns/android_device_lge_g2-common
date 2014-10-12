@@ -2,7 +2,8 @@
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
+ * modification, are permitted provided that the following conditions 
+are
  * met:
        * Redistributions of source code must retain the above copyright
          notice, this list of conditions and the following disclaimer.
@@ -16,14 +17,18 @@
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
- * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+NON-INFRINGEMENT
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
+CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR
  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
  * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -104,7 +109,8 @@ int parse_commandline(int argc, char *const argv[])
         {0, 0, 0, 0}
     };
 
-    while ((c = getopt_long(argc, argv, "-o:p:s:vh", long_options, NULL))
+    while ((c = getopt_long(argc, argv, "-o:p:s:vh", long_options, 
+NULL))
            != -1) {
         switch (c) {
         case 1:
@@ -310,7 +316,8 @@ struct chipInfo_t *getChipInfo(const char *filename, int *num)
                     }
                 }
 
-                log_err("... skip, incorrect '%s' format\n", QCDT_DT_TAG);
+                log_err("... skip, incorrect '%s' format\n", 
+QCDT_DT_TAG);
                 break;
             }
         }
@@ -406,9 +413,12 @@ int main(int argc, char **argv)
                 log_info("chipset: %u, platform: %u, rev: %u\n",
                          chip->chipset, chip->platform, chip->revNum);
 
-                for (t_chip = chip->t_next; t_chip; t_chip = t_chip->t_next) {
-                    log_info("   additional chipset: %u, platform: %u, rev: %u\n",
-                             t_chip->chipset, t_chip->platform, t_chip->revNum);
+                for (t_chip = chip->t_next; t_chip; t_chip = 
+t_chip->t_next) {
+                    log_info("   additional chipset: %u, platform: %u, 
+rev: %u\n",
+                             t_chip->chipset, t_chip->platform, 
+t_chip->revNum);
                 }
 
                 rc = chip_add(chip);
@@ -421,14 +431,18 @@ int main(int argc, char **argv)
                 dtb_count++;
 
                 chip->dtb_size = st.st_size +
-                                   (page_size - (st.st_size % page_size));
+                                   (page_size - (st.st_size % 
+page_size));
                 chip->dtb_file = filename;
 
-                for (t_chip = chip->t_next; t_chip; t_chip = t_chip->t_next) {
+                for (t_chip = chip->t_next; t_chip; t_chip = 
+t_chip->t_next) {
                     rc = chip_add(t_chip);
                     if (rc != RC_SUCCESS) {
-                        log_err("... duplicate info, skipped (chipset %u, platform: %u, rev: %u\n",
-                             t_chip->chipset, t_chip->platform, t_chip->revNum);
+                        log_err("... duplicate info, skipped (chipset 
+%u, platform: %u, rev: %u\n",
+                             t_chip->chipset, t_chip->platform, 
+t_chip->revNum);
                         continue;
                     }
                     dtb_count++;
@@ -460,7 +474,8 @@ int main(int argc, char **argv)
 
     /* Write header info */
     wrote += write(out_fd, QCDT_MAGIC, sizeof(uint8_t) * 4); /* magic */
-    wrote += write(out_fd, &version, sizeof(uint32_t));      /* version */
+    wrote += write(out_fd, &version, sizeof(uint32_t));      /* version 
+*/
     wrote += write(out_fd, (uint32_t *)&dtb_count, sizeof(uint32_t));
                                                              /* #DTB */
 
@@ -485,17 +500,20 @@ int main(int argc, char **argv)
         wrote += write(out_fd, &chip->platform, sizeof(uint32_t));
         wrote += write(out_fd, &chip->revNum, sizeof(uint32_t));
         if (chip->master->master_offset != 0) {
-            wrote += write(out_fd, &chip->master->master_offset, sizeof(uint32_t));
+            wrote += write(out_fd, &chip->master->master_offset, 
+sizeof(uint32_t));
         } else {
             wrote += write(out_fd, &expected, sizeof(uint32_t));
             chip->master->master_offset = expected;
             expected += chip->master->dtb_size;
         }
-        wrote += write(out_fd, &chip->master->dtb_size, sizeof(uint32_t));
+        wrote += write(out_fd, &chip->master->dtb_size, 
+sizeof(uint32_t));
     }
 
     rc = RC_SUCCESS;
-    wrote += write(out_fd, &rc, sizeof(uint32_t)); /* end of table indicator */
+    wrote += write(out_fd, &rc, sizeof(uint32_t)); /* end of table 
+indicator */
     if (padding > 0)
         wrote += write(out_fd, filler, padding);
 
@@ -513,14 +531,16 @@ int main(int argc, char **argv)
         pInputFile = fopen(filename, "r");
         if (pInputFile != NULL) {
             totBytesRead = 0;
-            while ((numBytesRead = fread(buf, 1, COPY_BLK, pInputFile)) > 0) {
+            while ((numBytesRead = fread(buf, 1, COPY_BLK, pInputFile)) 
+> 0) {
                 wrote += write(out_fd, buf, numBytesRead);
                 totBytesRead += numBytesRead;
             }
             fclose(pInputFile);
             padding = page_size - (totBytesRead % page_size);
             if ((uint32_t)(totBytesRead + padding) != dtb_size) {
-                log_err("DTB size mismatch, please re-run: expected %d vs actual %d (%s)\n",
+                log_err("DTB size mismatch, please re-run: expected %d 
+vs actual %d (%s)\n",
                         dtb_size, totBytesRead + padding,
                         filename);
                 rc = RC_ERROR;
@@ -537,7 +557,8 @@ int main(int argc, char **argv)
     close(out_fd);
 
     if (expected != wrote) {
-        log_err("error writing output file, please rerun: size mismatch %d vs %d\n",
+        log_err("error writing output file, please rerun: size mismatch 
+%d vs %d\n",
                 expected, wrote);
         rc = RC_ERROR;
     } else
@@ -553,3 +574,4 @@ cleanup:
     chip_deleteall();
     return rc;
 }
+

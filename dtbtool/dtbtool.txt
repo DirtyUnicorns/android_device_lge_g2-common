@@ -82,7 +82,8 @@ Android - Table of Device Tree
  device   +------------------+
   #1      | soc rev #1       |   uint32 (e.g. MSM8974 v2)
  entry    +------------------+
-   |      | offset #1        |   uint32 (byte offset from start/before MAGIC
+   |      | offset #1        |   uint32 (byte offset from start/before 
+MAGIC
    |      +------------------+           to DTB entry)
    |      | size #1          |   uint32 (size in bytes of DTB blob)
    x      +------------------+
@@ -97,17 +98,20 @@ Android - Table of Device Tree
   #Z      +------------------+
   entry   | soc rev #Z       |   uint32 (e.g. MSM8974 v2)
   (last)  +------------------+
-   |      | offset #Z        |   uint32 (byte offset from start/before MAGIC
+   |      | offset #Z        |   uint32 (byte offset from start/before 
+MAGIC
    x      +------------------+           to DTB entry)
           | 0 ("zero")       |   uint32 (end of list delimiter)
           +------------------+           to DTB entry)
-          | padding          |   variable length for next DTB to start on
+          | padding          |   variable length for next DTB to start 
+on
           +------------------+           page boundary
           | DTB #1           |   variable (start is page aligned)
           |                  |
           |                  |
           +------------------+
-          | padding          |   variable length for next DTB to start on
+          | padding          |   variable length for next DTB to start 
+on
           +------------------+           page boundary
                   .
                   .
@@ -156,3 +160,4 @@ Android - Table of Device Tree
         equal to or lower than the runtime detected soc rev
   6) Load the matching DTB blob to the tags addr
   7) LK pass the correct DTB to the kernel
+
