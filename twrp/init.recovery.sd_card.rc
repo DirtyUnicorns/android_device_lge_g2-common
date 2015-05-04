@@ -1,0 +1,12 @@
+##
+## Special init that is only copied (and thus used) if the variant has an External SD Card
+##
+
+on init
+
+    mkdir /external_sd 0700 root root
+    mkdir /mnt/media_rw 0700 media_rw media_rw
+    mkdir /mnt/media_rw/external_sd 0700 media_rw media_rw
+    export EXTERNAL_ADD_STORAGE /external_sd
+    export SECONDARY_STORAGE /external_sd
+    export EXTERNAL_STORAGE /external_sd
