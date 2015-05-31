@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Toolchain information
+TARGET_GCC_VERSION_EXP := 4.8-UBERTC
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.1-UBERTC/bin/"
+
 # CPU
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
