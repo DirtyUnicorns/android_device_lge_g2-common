@@ -115,10 +115,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qualcomm.sns.daemon=i \
     debug.qualcomm.sns.libsensor1=e
 
-# USB
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=20 \
