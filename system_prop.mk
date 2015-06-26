@@ -112,3 +112,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Background app control
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.fw.bg_apps_limit=10
+
+# MPDecision
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.perf.cores_online=2
