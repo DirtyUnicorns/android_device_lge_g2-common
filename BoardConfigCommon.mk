@@ -15,7 +15,7 @@
 #
 
 # Toolchain information
-TARGET_GCC_VERSION_EXP := 4.8-UBERTC
+TARGET_GCC_VERSION_EXP := 4.9-UBERTC
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.1-UBERTC/bin/"
 
