@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2014, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -27,14 +27,10 @@
 #
 
 target=`getprop ro.board.platform`
-if [ -f /sys/devices/soc0/soc_id ]; then
-    platformid=`cat /sys/devices/soc0/soc_id`
-else
-    platformid=`cat /sys/devices/system/soc/soc0/id`
-fi
+platformid=`cat /sys/devices/system/soc/soc0/id`
 
 # grep the modem partition for baseband version and set it
-setprop gsm.version.baseband `strings /firmware/image/modem.b21 | grep "^M8974A-" | head -1`
+setprop gsm.version.baseband `strings /dev/block/platform/msm_sdcc.1/by-name/modem | grep "^MPSS.DI." | head -1`
 
 #
 # Function to start sensors for DSPS enabled platforms
@@ -42,87 +38,49 @@ setprop gsm.version.baseband `strings /firmware/image/modem.b21 | grep "^M8974A-
 start_sensors()
 {
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        chmod -h 775 /persist/sensors
-        chmod -h 664 /persist/sensors/sensors_settings
-        chown -h system.root /persist/sensors/sensors_settings
+        mkdir -p /data/system/sensors
+        touch /data/system/sensors/settings
+        chmod 775 /data/system/sensors
+        chmod 664 /data/system/sensors/settings
+        chown system /data/system/sensors/settings
 
         mkdir -p /data/misc/sensors
-        chmod -h 775 /data/misc/sensors
+        chmod 775 /data/misc/sensors
 
-        # LGE_START, make /sns/cal folder for save sensor registy
-        # If the sns directory exists, make sns/cal/ directory
-        if [ -d /sns ]; then
-          mkdir -p /sns/cal
+# LGE_S G2-Task-Sensor@lge.com 2013-10-01
+# Mirroring sensor registry config file temporarily.
+        if [ -f /sns/cal/sns.reg ]; then
+            if [ ! -f /data/misc/sensors/sns.reg ]; then
+                cp /sns/cal/sns.reg /data/misc/sensors
+            fi
+        else
+            echo " Could not found the sensor registry config file in sns partion."
         fi
-        # LGE_END, make /sns/cal folder for save sensor registy
+# LGE_E G2-Task-Sensor@lge.com 2013-10-01
 
+        if [ ! -s /data/system/sensors/settings ]; then
+            # If the settings file is empty, enable sensors HAL
+            # Otherwise leave the file with it's current contents
+            echo 1 > /data/system/sensors/settings
+        fi
         start sensors
     fi
 }
 
 start_battery_monitor()
 {
-	if ls /sys/bus/spmi/devices/qpnp-bms-*/fcc_data ; then
-		chown -h root.system /sys/module/pm8921_bms/parameters/*
-		chown -h root.system /sys/module/qpnp_bms/parameters/*
-		chown -h root.system /sys/bus/spmi/devices/qpnp-bms-*/fcc_data
-		chown -h root.system /sys/bus/spmi/devices/qpnp-bms-*/fcc_temp
-		chown -h root.system /sys/bus/spmi/devices/qpnp-bms-*/fcc_chgcyl
-		chmod 0660 /sys/module/qpnp_bms/parameters/*
-		chmod 0660 /sys/module/pm8921_bms/parameters/*
-		mkdir -p /data/bms
-		chown -h root.system /data/bms
-		chmod 0770 /data/bms
-		start battery_monitor
-	fi
-}
-
-start_charger_monitor()
-{
-	if ls /sys/module/qpnp_charger/parameters/charger_monitor; then
-		chown -h root.system /sys/module/qpnp_charger/parameters/*
-		chown -h root.system /sys/class/power_supply/battery/input_current_max
-		chown -h root.system /sys/class/power_supply/battery/input_current_trim
-		chown -h root.system /sys/class/power_supply/battery/input_current_settled
-		chown -h root.system /sys/class/power_supply/battery/voltage_min
-		chmod 0664 /sys/class/power_supply/battery/input_current_max
-		chmod 0664 /sys/class/power_supply/battery/input_current_trim
-		chmod 0664 /sys/class/power_supply/battery/input_current_settled
-		chmod 0664 /sys/class/power_supply/battery/voltage_min
-		chmod 0664 /sys/module/qpnp_charger/parameters/charger_monitor
-		start charger_monitor
-	fi
-}
-
-start_vm_bms()
-{
-	if [ -e /dev/vm_bms ]; then
-		chown -h root.system /sys/class/power_supply/bms/current_now
-		chown -h root.system /sys/class/power_supply/bms/voltage_ocv
-		chmod 0664 /sys/class/power_supply/bms/current_now
-		chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-		start vm_bms
-	fi
-}
-
-start_msm_irqbalance_8939()
-{
-	if [ -f /system/bin/msm_irqbalance ]; then
-		case "$platformid" in
-		    "239")
-			start msm_irqbalance;;
-		esac
-	fi
-}
-
-start_msm_irqbalance()
-{
-	if [ -f /system/bin/msm_irqbalance ]; then
-		start msm_irqbalance
-	fi
+	chown root.system /sys/module/pm8921_bms/parameters/*
+	chmod 0660 /sys/module/pm8921_bms/parameters/*
+	mkdir -p /data/bms
+	chown root.system /data/bms
+	chmod 0770 /data/bms
+	start battery_monitor
 }
 
 baseband=`getprop ro.baseband`
+izat_premium_enablement=`getprop ro.qc.sdk.izat.premium_enabled`
+izat_service_mask=`getprop ro.qc.sdk.izat.service_mask`
+
 #
 # Suppress default route installation during RA for IPV6; user space will take
 # care of this
@@ -133,32 +91,73 @@ do
 done
 echo 1 > /proc/sys/net/ipv6/conf/default/accept_ra_defrtr
 
+#
+# Start gpsone_daemon for SVLTE Type I & II devices
+#
+case "$target" in
+        "msm7630_fusion" | "msm8960")
+#        start gpsone_daemon
+esac
 case "$baseband" in
         "svlte2a")
-        start bridgemgrd
+#        start gpsone_daemon
+#        start bridgemgrd
         ;;
+        "sglte" | "sglte2")
+#        start gpsone_daemon
+        ;;
+
 esac
+
+let "izat_service_gtp_wifi=$izat_service_mask & 2#1"
+let "izat_service_gtp_wwan_lite=($izat_service_mask & 2#10)>>1"
+let "izat_service_pip=($izat_service_mask & 2#100)>>2"
+
+if [ "$izat_premium_enablement" -ne 1 ]; then
+    if [ "$izat_service_gtp_wifi" -ne 0 ]; then
+# GTP WIFI bit shall be masked by the premium service flag
+        let "izat_service_gtp_wifi=0"
+    fi
+fi
+
+if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
+   [ "$izat_service_gtp_wifi" -ne 0 ] ||
+   [ "$izat_service_pip" -ne 0 ]; then
+# OS Agent would also be started under the same condition
+    start location_mq
+fi
+
+if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
+   [ "$izat_service_gtp_wifi" -ne 0 ]; then
+# start GTP services shared by WiFi and WWAN Lite
+    start xtwifi_inet
+    start xtwifi_client
+fi
+
+if [ "$izat_service_gtp_wifi" -ne 0 ] ||
+   [ "$izat_service_pip" -ne 0 ]; then
+# advanced WiFi scan service shared by WiFi and PIP
+    start lowi-server
+fi
+
+if [ "$izat_service_pip" -ne 0 ]; then
+# PIP services
+    start quipc_main
+    start quipc_igsn
+fi
 
 start_sensors
 
 case "$target" in
     "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
-        if [ -f /sys/devices/soc0/hw_platform ]; then
-            value=`cat /sys/devices/soc0/hw_platform`
-        else
-            value=`cat /sys/devices/system/soc/soc0/hw_platform`
-        fi
+        value=`cat /sys/devices/system/soc/soc0/hw_platform`
         case "$value" in
             "Fluid")
              start profiler_daemon;;
         esac
         ;;
     "msm8660" )
-        if [ -f /sys/devices/soc0/hw_platform ]; then
-            platformvalue=`cat /sys/devices/soc0/hw_platform`
-        else
-            platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
-        fi
+        platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
         case "$platformvalue" in
             "Fluid")
                 start profiler_daemon;;
@@ -170,11 +169,7 @@ case "$target" in
                 start_battery_monitor;;
         esac
 
-        if [ -f /sys/devices/soc0/hw_platform ]; then
-            platformvalue=`cat /sys/devices/soc0/hw_platform`
-        else
-            platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
-        fi
+        platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
         case "$platformvalue" in
              "Fluid")
                  start profiler_daemon;;
@@ -190,33 +185,5 @@ case "$target" in
              "Liquid")
                  start profiler_daemon;;
         esac
-        case "$baseband" in
-            "msm")
-                start_battery_monitor
-                ;;
-        esac
-        start_charger_monitor
-        ;;
-    "apq8084")
-        platformvalue=`cat /sys/devices/soc0/hw_platform`
-        case "$platformvalue" in
-             "Fluid")
-                 start profiler_daemon;;
-             "Liquid")
-                 start profiler_daemon;;
-        esac
-        ;;
-    "msm8226")
-        start_charger_monitor
-        ;;
-    "msm8610")
-        start_charger_monitor
-        ;;
-    "msm8916")
-        start_vm_bms
-        start_msm_irqbalance_8939
-        ;;
-    "msm8994")
-        start_msm_irqbalance
         ;;
 esac
