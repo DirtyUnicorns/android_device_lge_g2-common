@@ -4,8 +4,7 @@
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480 \
-    ro.opengles.version=196608 \
-    ro.loki_enabled=1
+    ro.opengles.version=196608
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -56,7 +55,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=150
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.recordable.rgba8888=1
@@ -70,6 +69,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensor debugging
 # Valid settings (and presumably what they mean):
+#===============================================
+#    persist.debug.sensors.hal=e \
+#    persist.debug.ar.hal=e
+#===============================================
 #   0      - off
 #   1      - all the things
 #   V or v - verbose
@@ -79,11 +82,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #   I or i - info
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.qualcomm.sns.hal=e \
-    debug.qualcomm.sns.daemon=e \
-    debug.qualcomm.sns.libsensor1=e \
-    persist.debug.sensors.hal=e \
-    persist.debug.ar.hal=e
+    debug.qualcomm.sns.hal=i \
+    debug.qualcomm.sns.daemon=i \
+    debug.qualcomm.sns.libsensor1=e
 
 # MTP and USB-OTG
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -93,3 +94,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # QC vendor extension
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+
+# Background app control
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.fw.bg_apps_limit=10
