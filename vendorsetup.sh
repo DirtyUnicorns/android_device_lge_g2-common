@@ -25,5 +25,6 @@ add_lunch_combo carbon_d802-userdebug
 add_lunch_combo carbon_d802-userdebug
 add_lunch_combo carbon_d803-userdebug
 add_lunch_combo carbon_f320-userdebug
+add_lunch_combo carbon_l01f-userdebug
 add_lunch_combo carbon_ls980-userdebug
 add_lunch_combo carbon_vs980-userdebug
