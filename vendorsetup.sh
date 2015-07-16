@@ -20,11 +20,11 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 export USE_CCACHE=1
-add_lunch_combo carbon_d800-userdebug
-add_lunch_combo carbon_d802-userdebug
-add_lunch_combo carbon_d802-userdebug
-add_lunch_combo carbon_d803-userdebug
-add_lunch_combo carbon_f320-userdebug
-add_lunch_combo carbon_l01f-userdebug
-add_lunch_combo carbon_ls980-userdebug
-add_lunch_combo carbon_vs980-userdebug
+add_lunch_combo du_d800-userdebug
+add_lunch_combo du_d802-userdebug
+add_lunch_combo du_d802-userdebug
+add_lunch_combo du_d803-userdebug
+add_lunch_combo du_f320-userdebug
+add_lunch_combo du_l01f-userdebug
+add_lunch_combo du_ls980-userdebug
+add_lunch_combo du_vs980-userdebug
