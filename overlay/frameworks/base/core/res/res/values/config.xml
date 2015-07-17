@@ -23,13 +23,22 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <!-- Default color for notification LED is white. -->
-    <color name="config_defaultNotificationColor">#ffffffff</color>
+    <color name="config_defaultNotificationColor">#FF00FF00</color>
 
     <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
 
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
+
+    <!-- Default value for led color when battery is low on charge -->
+    <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
+
+    <!-- Default value for led color when battery is medium charged -->
+    <integer name="config_notificationsBatteryMediumARGB">0xFF33b5e5</integer>
+
+    <!-- Default value for led color when battery is fully charged -->
+    <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
@@ -281,10 +290,6 @@
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
-    <!-- Performance profiles
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string> -->
-
     <bool name="config_lidControlsSleep">true</bool>
 
     <!--integer-array name="config_smartCoverWindowCoords">
@@ -305,4 +310,32 @@
     <integer name="config_multiuserMaximumUsers">4</integer>
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- Configure mobile tcp buffer sizes in the form:
+         rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
+         If no value is found for the rat-name in use, the system default will be applied.
+    -->
+    <string-array name="config_mobile_tcp_buffers">
+        <item>lte:524288,1048576,5120000,262144,524288,1220608</item>
+        <item>hspap:4096,174760,1572864,4096,16384,1220608</item>
+        <item>hspa:4096,174760,1572864,4096,16384,1220608</item>
+        <item>hsupa:4096,174760,1572864,4096,16384,1220608</item>
+        <item>hsdpa:4096,174760,1572864,4096,16384,1220608</item>
+        <item>umts:4096,174760,1572864,4096,16384,110208</item>
+        <item>edge:4093,26280,35040,4096,16384,35040</item>
+        <item>gprs:4092,8760,11680,4096,8760,11680</item>
+        <item>evdo_b:4094,87380,262144,4096,16384,262144</item>
+    </string-array>
+
+    <!-- Configure ethernet tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_ethernet_tcp_buffers" translatable="false">4096,524228,1048576,4096,87380,704512</string>
+
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_wifi_tcp_buffers" translatable="false">4096,524228,1048576,4096,87380,704512</string>
+
+    <!-- Configuration to sending and receiving Mms when mobile data is disable.-->
+    <bool name="config_enable_mms_with_mobile_data_off">true</bool>
+
 </resources>
