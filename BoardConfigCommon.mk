@@ -150,6 +150,16 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/g2-common/include
 #Fix reboot when the screen is locked
 BOARD_NO_WIFI_HAL := true
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_ONLY := false
+    endif
+  endif
+endif
+WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 ###                                     ###
 ### Specific Options for TWRP Building  ###
