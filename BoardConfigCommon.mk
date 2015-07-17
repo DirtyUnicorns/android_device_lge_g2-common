@@ -116,6 +116,9 @@ BOARD_BLUEDROID_VENDOR_CONF := device/lge/g2-common/bluetooth/vnd_g2.txt
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# NFC
+TARGET_USES_OS_NFC := true
+
 # Offmode Charging
 BOARD_CHARGER_ENABLE_SUSPEND := true
 COMMON_GLOBAL_CFLAGS += \
@@ -153,7 +156,6 @@ BOARD_NO_WIFI_HAL := true
 ###                                     ###
 
 # Common Options
-RECOVERY_VARIANT := twrp
 DEVICE_RESOLUTION := 1080x1920
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
