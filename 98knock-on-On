@@ -1,0 +1,11 @@
+#!/system/bin/sh
+
+busybox sleep 30;
+
+busybox echo 1 > /sys/devices/virtual/input/lge_touch/touch_gesture;
+LOG_FILE=/data/local/knock-on-On.log;
+
+if [ -e /data/local/knock-on-On.log ]; then
+    busybox rm /data/local/knock-on-On.log;
+fi
+busybox echo "Knock-on function has been successfully enabled $(date +"%m-%d-%Y %H:%M:%S")" | tee -a $LOG_FILE;

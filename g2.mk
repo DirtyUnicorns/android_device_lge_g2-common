@@ -213,3 +213,6 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 $(call inherit-product-if-exists, hardware/qcom/msm8x74/msm8x74.mk)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/98knock-on-On:system/etc/init.d/98knock-on-On
