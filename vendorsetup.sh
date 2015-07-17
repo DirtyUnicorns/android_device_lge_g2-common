@@ -21,6 +21,7 @@
 # function: add_lunch_combo generic-eng
 export USE_CCACHE=1
 add_lunch_combo du_d800-userdebug
+add_lunch_combo du_d801-userdebug
 add_lunch_combo du_d802-userdebug
 add_lunch_combo du_d802-userdebug
 add_lunch_combo du_d803-userdebug
