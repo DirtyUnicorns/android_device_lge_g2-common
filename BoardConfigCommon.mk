@@ -125,9 +125,6 @@ COMMON_GLOBAL_CFLAGS += \
     -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' \
     -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
 
-# CM Hardware
-BOARD_HARDWARE_CLASS := device/lge/g2-common/cmhw/
-
 # SELinux policies
 # QCOM sepolicy
 include device/qcom/sepolicy/sepolicy.mk
