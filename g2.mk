@@ -214,6 +214,6 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bc
 
 $(call inherit-product-if-exists, hardware/qcom/msm8x74/msm8x74.mk)
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/98knock-on-On:system/etc/init.d/98knock-on-On \
-    $(LOCAL_PATH)/Kernel_Auditor.apk:system/app/Auditor/Auditor.apk
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/98knock-on-On:system/etc/init.d/98knock-on-On \
+#    $(LOCAL_PATH)/Kernel_Auditor.apk:system/app/Auditor/Auditor.apk
