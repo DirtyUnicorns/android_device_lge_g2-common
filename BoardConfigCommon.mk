@@ -139,6 +139,7 @@ BOARD_SEPOLICY_UNION += \
     mpdecision.te \
     platform_app.te \
     servicemanager.te \
+    shell.te \
     sysinit.te \
     untrusted_app.te \
     vold.te \

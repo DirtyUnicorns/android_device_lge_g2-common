@@ -1,0 +1,3 @@
+allow shell unlabeled:file { read open };
+allow shell unlabeled:lnk_file read;
+allow shell dalvikcache_data_file:file write;

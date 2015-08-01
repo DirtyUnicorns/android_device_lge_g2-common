@@ -7,3 +7,6 @@ allow sysinit system_data_file:dir { write remove_name add_name };
 allow sysinit system_data_file:file { write unlink };
 allow sysinit system_data_file:file { create open append };
 allow sysinit wifi_data_file:file getattr;
+allow sysinit wifi_data_file:dir search;
+
+allow sysinit unlabeled:file { read open };
