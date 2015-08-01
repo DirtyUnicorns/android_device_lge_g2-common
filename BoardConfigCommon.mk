@@ -132,6 +132,18 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     device/lge/g2-common/sepolicy
 
+# Device specific additions
+BOARD_SEPOLICY_UNION += \
+    init.te \
+    init_shell.te \
+    mpdecision.te \
+    platform_app.te \
+    servicemanager.te \
+    sysinit.te \
+    untrusted_app.te \
+    vold.te \
+    zygote.te
+
 # RIL
 BOARD_RIL_CLASS := ../../../device/lge/g2-common/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS

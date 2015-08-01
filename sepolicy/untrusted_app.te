@@ -1,0 +1,4 @@
+allow untrusted_app auditd_log:dir getattr;
+allow untrusted_app debugfs:file { getattr };
+allow untrusted_app unlabeled:lnk_file { read getattr };
+

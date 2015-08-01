@@ -1,0 +1,9 @@
+allow sysinit self:capability dac_override;
+allow sysinit surfaceflinger_exec:file getattr;
+allow sysinit touchpanel_sysfs:dir search;
+allow sysinit touchpanel_sysfs:file { write getattr open };
+
+allow sysinit system_data_file:dir { write remove_name add_name };
+allow sysinit system_data_file:file { write unlink };
+allow sysinit system_data_file:file { create open append };
+allow sysinit wifi_data_file:file getattr;
