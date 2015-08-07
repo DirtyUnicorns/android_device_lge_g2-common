@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Code Aurora Forum. All rights reserved.
+/* Copyright (c) 2011, Code Aurora Forum. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,41 +26,65 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-
-#ifndef LOC_LOG_H
-#define LOC_LOG_H
+#ifndef LOC_ENG_MSG_ID_H
+#define LOC_ENG_MSG_ID_H
 
 #ifdef __cplusplus
-extern "C"
-{
-#endif
+extern "C" {
+#endif /* __cplusplus */
 
-#include <ctype.h>
+struct msgbuf {
+    unsigned int msgsz;
+    void* msgid;
+};
 
-typedef struct
-{
-   char                 name[128];
-   long                 val;
-} loc_name_val_s_type;
+enum loc_eng_msg_ids_t {
+    /* 0x 0 - 0xEF is reserved for daemon internal */
+    /* 0xF0 - 0x1FF is reserved for daemon & framework communication */
+    LOC_ENG_MSG_QUIT = 0x200,
 
-#define NAME_VAL(x) {"" #x "", x }
+    LOC_ENG_MSG_ENGINE_DOWN,
+    LOC_ENG_MSG_ENGINE_UP,
 
-#define UNKNOWN_STR "UNKNOWN"
+    LOC_ENG_MSG_START_FIX,
+    LOC_ENG_MSG_STOP_FIX,
+    LOC_ENG_MSG_SET_POSITION_MODE,
+    LOC_ENG_MSG_SET_TIME,
+    LOC_ENG_MSG_INJECT_XTRA_DATA,
+    LOC_ENG_MSG_INJECT_LOCATION,
+    LOC_ENG_MSG_DELETE_AIDING_DATA,
+    LOC_ENG_MSG_SET_APN,
+    LOC_ENG_MSG_SET_SERVER_URL,
+    LOC_ENG_MSG_SET_SERVER_IPV4,
+    LOC_ENG_MSG_ENABLE_DATA,
 
-#define CHECK_MASK(type, value, mask_var, mask) \
-   ((mask_var & mask) ? (type) value : (type) (-1))
+    LOC_ENG_MSG_SUPL_VERSION,
+    LOC_ENG_MSG_SET_SENSOR_CONTROL_CONFIG,
+    LOC_ENG_MSG_SET_SENSOR_PROPERTIES,
+    LOC_ENG_MSG_SET_SENSOR_PERF_CONTROL_CONFIG,
+    LOC_ENG_MSG_MUTE_SESSION,
 
-/* Get names from value */
-const char* loc_get_name_from_mask(loc_name_val_s_type table[], int table_size, long mask);
-const char* loc_get_name_from_val(loc_name_val_s_type table[], int table_size, long value);
-const char* loc_get_msg_q_status(int status);
+    LOC_ENG_MSG_ATL_OPEN_SUCCESS,
+    LOC_ENG_MSG_ATL_CLOSED,
+    LOC_ENG_MSG_ATL_OPEN_FAILED,
 
-extern const char* log_succ_fail_string(int is_succ);
-
-extern char *loc_get_time(char *time_string, unsigned long buf_size);
+    LOC_ENG_MSG_REPORT_POSITION,
+    LOC_ENG_MSG_REPORT_SV,
+    LOC_ENG_MSG_REPORT_STATUS,
+    LOC_ENG_MSG_REPORT_NMEA,
+    LOC_ENG_MSG_REQUEST_BIT,
+    LOC_ENG_MSG_RELEASE_BIT,
+    LOC_ENG_MSG_REQUEST_ATL,
+    LOC_ENG_MSG_RELEASE_ATL,
+    LOC_ENG_MSG_REQUEST_NI,
+    LOC_ENG_MSG_INFORM_NI_RESPONSE,
+    LOC_ENG_MSG_REQUEST_XTRA_DATA,
+    LOC_ENG_MSG_REQUEST_TIME,
+    LOC_ENG_MSG_REQUEST_POSITION
+};
 
 #ifdef __cplusplus
 }
-#endif
+#endif /* __cplusplus */
 
-#endif /* LOC_LOG_H */
+#endif /* LOC_ENG_MSG_ID_H */

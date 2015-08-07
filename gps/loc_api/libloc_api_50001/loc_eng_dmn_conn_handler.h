@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Code Aurora Forum. All rights reserved.
+/* Copyright (c) 2011, Code Aurora Forum. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,41 +26,57 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+#ifndef LOC_ENG_DATA_SERVER_HANDLER
+#define LOC_ENG_DATA_SERVER_HANDLER
 
-#ifndef LOC_LOG_H
-#define LOC_LOG_H
+#include <linux/types.h>
+#include <arpa/inet.h>
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+enum {
+    /* 0x0 - 0xEF is reserved for daemon internal */
+    GPSONE_LOC_API_IF_REQUEST   = 0xF0,
+    GPSONE_LOC_API_IF_RELEASE,
+    GPSONE_LOC_API_RESPONSE,
+    GPSONE_UNBLOCK,
+};
 
-#include <ctype.h>
+enum {
+    GPSONE_LOC_API_IF_REQUEST_SUCCESS = 0xF0,
+    GPSONE_LOC_API_IF_RELEASE_SUCCESS,
+    GPSONE_LOC_API_IF_FAILURE,
+};
 
-typedef struct
-{
-   char                 name[128];
-   long                 val;
-} loc_name_val_s_type;
 
-#define NAME_VAL(x) {"" #x "", x }
+struct ctrl_msg_response {
+    int result;
+};
 
-#define UNKNOWN_STR "UNKNOWN"
+struct ctrl_msg_unblock {
+    int reserved;
+};
 
-#define CHECK_MASK(type, value, mask_var, mask) \
-   ((mask_var & mask) ? (type) value : (type) (-1))
+struct ctrl_msg_if_request {
+    unsigned is_supl; /* 1: use Android SUPL connection; 0: use Android default internet connection */
+    unsigned long ipv4_addr;
+    unsigned char ipv6_addr[16];
+};
 
-/* Get names from value */
-const char* loc_get_name_from_mask(loc_name_val_s_type table[], int table_size, long mask);
-const char* loc_get_name_from_val(loc_name_val_s_type table[], int table_size, long value);
-const char* loc_get_msg_q_status(int status);
+/* do not change this structure */
+struct ctrl_msgbuf {
+    size_t msgsz;
+    uint16_t reserved1;
+    uint32_t reserved2;
+    uint8_t ctrl_type;
+    union {
+        struct ctrl_msg_response   cmsg_response;
+        struct ctrl_msg_unblock    cmsg_unblock;
+        struct ctrl_msg_if_request cmsg_if_request;
+    } cmsg;
+};
 
-extern const char* log_succ_fail_string(int is_succ);
+extern void* loc_api_handle;
 
-extern char *loc_get_time(char *time_string, unsigned long buf_size);
+int loc_eng_dmn_conn_loc_api_server_if_request_handler(struct ctrl_msgbuf *pmsg, int len);
+int loc_eng_dmn_conn_loc_api_server_if_release_handler(struct ctrl_msgbuf *pmsg, int len);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* LOC_LOG_H */
+#endif /* LOC_ENG_DATA_SERVER_HANDLER */
