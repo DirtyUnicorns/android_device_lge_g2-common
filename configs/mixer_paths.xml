@@ -19,7 +19,7 @@
     <ctl name="Voip Evrc Min Max Rate Config" id="0" value="1" />
     <ctl name="Voip Evrc Min Max Rate Config" id="1" value="4" />
     <ctl name="Voip Dtx Mode" value="0" />
-    <ctl name="TTY Mode" value="Off" />
+    <ctl name="TTY Mode" value="OFF" />
     <ctl name="LINEOUT1 Volume" value="12" />
     <ctl name="LINEOUT2 Volume" value="12" />
     <ctl name="LINEOUT3 Volume" value="12" />
@@ -206,6 +206,12 @@
         <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <path name="deep-buffer-playback bt-sco-and-speaker">
+        <path name="deep-buffer-playback bt-sco" />
+        <path name="deep-buffer-playback" />
+    </path>
+
+
     <path name="low-latency-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
     </path>
@@ -241,6 +247,11 @@
 
     <path name="low-latency-playback transmission-fm">
         <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback bt-sco-and-speaker">
+        <path name="low-latency-playback bt-sco" />
+        <path name="low-latency-playback" />
     </path>
 
     <path name="multi-channel-playback hdmi">
@@ -359,6 +370,7 @@
     </path>
 
     <path name="compress-voip-call bt-sco-wb">
+        <ctl name="AUX PCM SampleRate" value="rate_16000" />
         <path name="compress-voip-call bt-sco" />
     </path>
 
@@ -723,14 +735,12 @@
     
     <path name="submic-1">
         <path name="adc5" />
-        <ctl name="ADC5 Volume" value="19" />
-        <ctl name="DEC2 Volume" value="66" />
+        <ctl name="ADC5 Volume" value="12" />
+        <ctl name="DEC2 Volume" value="60" />
     </path>
  
     <path name="submic-2">
         <path name="adc4" />
-        <ctl name="ADC5 Volume" value="12" />
-        <ctl name="DEC2 Volume" value="60" />
     </path>
 
     <path name="voice-memo-8K">
@@ -927,8 +937,8 @@
         <ctl name="RX2 MIX1 INP1" value="RX1" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHL Volume" value="9" />
-        <ctl name="HPHR Volume" value="9" />
+        <ctl name="HPHL Volume" value="16" />
+        <ctl name="HPHR Volume" value="16" />
         <ctl name="RX1 Digital Volume" value="68" />
         <ctl name="RX2 Digital Volume" value="68" />
     </path>
