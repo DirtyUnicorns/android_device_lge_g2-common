@@ -116,3 +116,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # MPDecision
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.perf.cores_online=1
+
+# Provides overrides to configure the HWUI/Dalvik limits
+# Source https://github.com/CyanogenMod/android_frameworks_native/tree/cm-12.1/build
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=80 \
+    ro.hwui.layer_cache_size=52 \
+    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.path_cache_size=32 \
+    ro.hwui.gradient_cache_size=2 \
+    ro.hwui.drop_shadow_cache_size=8 \
+    ro.hwui.text_small_cache_width=1024 \
+    ro.hwui.text_small_cache_height=1024 \
+    ro.hwui.text_large_cache_width=2048 \
+    ro.hwui.text_large_cache_height=1024 \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapmaxfree=8m
