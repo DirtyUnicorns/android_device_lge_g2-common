@@ -1,1 +1,0 @@
-allow init self:tcp_socket { write create connect getattr };
