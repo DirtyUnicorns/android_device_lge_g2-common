@@ -151,9 +151,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Device headers
 TARGET_SPECIFIC_HEADER_PATH := device/lge/g2-common/include
 
-#Fix reboot when the screen is locked
-BOARD_NO_WIFI_HAL := true
-
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
