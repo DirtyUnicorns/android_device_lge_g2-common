@@ -30,7 +30,7 @@ target=`getprop ro.board.platform`
 platformid=`cat /sys/devices/system/soc/soc0/id`
 
 # grep the modem partition for baseband version and set it
-setprop gsm.version.baseband `strings /firmware/image/modem.b22 | grep "^MPSS_DI" | head -1`
+setprop gsm.version.baseband `strings /firmware/image/modem.b18 | grep -e "^MPSS.DI." | head -1`
 
 #
 # Function to start sensors for DSPS enabled platforms
