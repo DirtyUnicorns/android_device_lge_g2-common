@@ -1,0 +1,1 @@
+allow shell unlabeled:lnk_file read;

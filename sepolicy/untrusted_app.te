@@ -4,3 +4,6 @@ allow untrusted_app unlabeled:lnk_file { read getattr };
 allow untrusted_app unlabeled:file { read getattr open };
 allow untrusted_app audio_data_file:dir getattr;
 
+allow untrusted_app persist_data_file:dir getattr;
+allow untrusted_app persist_file:dir getattr;
+allow untrusted_app unlabeled:dir getattr;
