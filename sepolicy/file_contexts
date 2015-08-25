@@ -21,4 +21,3 @@
 /dev/bcm2079x                         u:object_r:nfc_device:s0
 /dev/socket/mpdecision(/.*)?          u:object_r:mpctl_socket:s0
 /data/cam_socket.*                    u:object_r:camera_socket:s0
-

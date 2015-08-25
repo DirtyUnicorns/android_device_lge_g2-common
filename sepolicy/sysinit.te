@@ -5,3 +5,6 @@ allow sysinit touchpanel_sysfs:dir search;
 allow sysinit touchpanel_sysfs:file { getattr write open };
 allow sysinit wifi_data_file:dir search;
 allow sysinit wifi_data_file:file getattr;
+
+allow sysinit system_data_file:dir { write add_name remove_name };
+allow sysinit system_data_file:file { create open append unlink };
