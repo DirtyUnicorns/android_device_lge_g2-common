@@ -236,7 +236,7 @@
 /dev/lge_moca_drv0        0666   system     system
 
 # Immersion
-/dev/tspdrv               0666   root       root
+/dev/tspdrv               0660   system     system
 
 /dev/lge_ddm_tty0         0660   system     system
 
