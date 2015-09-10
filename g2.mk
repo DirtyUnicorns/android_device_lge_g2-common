@@ -210,6 +210,3 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 $(call inherit-product-if-exists, hardware/qcom/msm8x74/msm8x74.mk)
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/Kernel_Auditor.apk:system/app/Auditor/Auditor.apk
