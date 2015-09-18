@@ -111,7 +111,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Background app control
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.fw.bg_apps_limit=10
+    ro.sys.fw.bg_apps_limit=10 \
+    ro.sys.fw.bg_cached_ratio=0.5 \
+    ro.sys.fw.mOomAdj1=0 \
+    ro.sys.fw.mOomAdj2=1 \
+    ro.sys.fw.mOomAdj3=2 \
+    ro.sys.fw.mOomAdj4=3 \
+    ro.sys.fw.mOomAdj5=9 \
+    ro.sys.fw.mOomAdj6=15 \
+    ro.sys.fw.mOomMinFree1=73728 \
+    ro.sys.fw.mOomMinFree2=92160 \
+    ro.sys.fw.mOomMinFree3=110592 \
+    ro.sys.fw.mOomMinFree4=129024 \
+    ro.sys.fw.mOomMinFree5=196608 \
+    ro.sys.fw.mOomMinFree6=245760
 
 # MPDecision
 PRODUCT_PROPERTY_OVERRIDES += \
