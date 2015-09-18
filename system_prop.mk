@@ -42,6 +42,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
+# system props for the data modules
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.use_data_netmgrd=true \
+    persist.data.netmgrd.qos.enable=true \
+    ro.data.large_tcp_window_size=true
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
