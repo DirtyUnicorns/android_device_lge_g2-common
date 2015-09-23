@@ -1,2 +1,2 @@
 allow vold sensors_persist_file:dir { read getattr ioctl open };
-allow vold persist_data_file:dir getattr;
+allow vold persist_data_file:dir { read getattr ioctl open };
