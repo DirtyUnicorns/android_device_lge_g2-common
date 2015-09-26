@@ -139,36 +139,6 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     device/lge/g2-common/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    clatd.te \
-    file.te \
-    file_contexts \
-    genfs_contexts \
-    init.te \
-    init_shell.te \
-    kernel.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    netd.te \
-    platform_app.te \
-    property.te \
-    property_contexts \
-    qseecomd.te \
-    radio.te \
-    rmt_storage.te \
-    sensors.te \
-    servicemanager.te \
-    shell.te \
-    sysinit.te \
-    system_app.te \
-    system_server.te \
-    thermal-engine.te \
-    untrusted_app.te \
-    vold.te \
-    wpa.te
-
 # RIL
 BOARD_RIL_CLASS := ../../../device/lge/g2-common/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
