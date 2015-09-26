@@ -1,3 +1,0 @@
-allow untrusted_app unlabeled:dir { read open };
-allow untrusted_app unlabeled:file { read getattr open };
-allow untrusted_app unlabeled:lnk_file { read getattr open };
