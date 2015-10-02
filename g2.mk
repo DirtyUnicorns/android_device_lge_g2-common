@@ -213,5 +213,3 @@ PRODUCT_PACKAGES += \
     librecovery_updater_g2
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
-
-$(call inherit-product-if-exists, hardware/qcom/msm8x74/msm8x74.mk)
