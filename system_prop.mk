@@ -2,80 +2,60 @@
 # System Properties for G2
 #
 
+# Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=480 \
-    ro.opengles.version=196608
-
-# Audio Configuration
-PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true \
-    mm.enable.qcom_parser=3310129 \
-    ro.qc.sdk.audio.fluencetype=none \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.audiorec=false \
-    persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=false \
     persist.audio.dualmic.config=endfire \
-    ro.qc.sdk.audio.ssr=false \
-    audio.offload.buffer.size.kb=32 \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    use.voice.path.for.pcm.voip=true \
-    audio.offload.multiple.enabled=false \
-    audio.offload.gapless.enabled=true \
-    tunnel.audio.encode=false \
-    media.aac_51_output_enabled=true \
-    audio.offload.pcm.24bit.enable=true
+    persist.audio.fluence.audiorec=true \
+    persist.audio.fluence.voicecall=true \
+    ro.qc.sdk.audio.fluencetype=fluence \
+    use.voice.path.for.pcm.voip=true
 
-# Do not power down SIM card when modem is sent to Low Power Mode.
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1
-
-# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=LgeLteRIL
-
-# Up to 3 layers can go through overlays
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.hwc.mdpcomp.enable=true
-
-# system props for the data modules
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.use_data_netmgrd=true \
-    persist.data.netmgrd.qos.enable=true \
-    ro.data.large_tcp_window_size=true
-
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=1
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/vendor/lib/libril-qc-qmi-1.so
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
-
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/data/misc/bdaddr
 
-# Wifi Configuration
+# Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=160 \
-    wlan.chip.vendor=brcm \
-    wlan.chip.version=bcm4335 \
-    wifi.lge.patch=true \
-    wlan.lge.concurrency=MCC \
-    wlan.lge.supportsimaka=yes \
-    wifi.lge.offdelay=false \
-    wifi.lge.offloading=true \
-    wifi.lge.aggregation=true \
-    wifi.lge.mhp=true \
-    wlan.lge.softap5g=true \
-    wlan.lge.dcf.enable=true
+    camera2.portability.force_api=1
+
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.hwc.mdpcomp.enable=true \
+    ro.opengles.version=196608 \
+    ro.sf.lcd_density=480
+
+# DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
+# Media/offload
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.gapless.enabled=true \
+    audio.offload.multiple.enabled=false \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true \
+    av.offload.enable=true \
+    av.streaming.offload.enable=true \
+    tunnel.audio.encode=true \
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.aac_51_output_enabled=true \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=3310129
+
+# Perf
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.apm_sim_not_pwdn=1 \
+    ro.telephony.call_ring.multiple=0
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
+    ro.telephony.ril_class=LgeLteRIL
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -117,14 +97,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qualcomm.sns.daemon=i \
     debug.qualcomm.sns.libsensor1=e
 
-# MTP and USB-OTG
+# USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
     persist.sys.isUsbOtgEnabled=true
 
-# QC vendor extension
+# Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+    wifi.supplicant_scan_interval=160 \
+    wifi.interface=wlan0
 
 # Background app control
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -148,7 +129,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.perf.cores_online=2
 
 # Provides overrides to configure the HWUI/Dalvik limits
-# Source https://github.com/CyanogenMod/android_frameworks_native/tree/cm-12.1/build
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=80 \
     ro.hwui.layer_cache_size=52 \
@@ -166,3 +146,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
+
