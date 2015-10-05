@@ -116,8 +116,8 @@ PRODUCT_PACKAGES += \
     fstab.g2 \
     init.g2.rc \
     init.g2.usb.rc \
-    init.qcom.sh \
     panel.sh \
+    set_baseband.sh \
     ueventd.g2.rc
 
 # IPv6 tethering
