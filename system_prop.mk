@@ -64,7 +64,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=240 \
+    wifi.supplicant_scan_interval=160 \
     wlan.chip.vendor=brcm \
     wlan.chip.version=bcm4335 \
     wifi.lge.patch=true \
@@ -117,7 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Background app control
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.fw.bg_apps_limit=10 \
+    ro.sys.fw.bg_apps_limit=28 \
     ro.sys.fw.bg_cached_ratio=0.5 \
     ro.sys.fw.mOomAdj1=0 \
     ro.sys.fw.mOomAdj2=1 \
