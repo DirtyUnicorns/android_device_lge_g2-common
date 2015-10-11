@@ -134,7 +134,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # MPDecision
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.perf.cores_online=1
+    ro.qualcomm.perf.cores_online=2
 
 # Provides overrides to configure the HWUI/Dalvik limits
 # Source https://github.com/CyanogenMod/android_frameworks_native/tree/cm-12.1/build
