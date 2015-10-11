@@ -485,7 +485,7 @@ on charger
     write /proc/sys/vm/dirty_ratio 90
     write /proc/sys/vm/dirty_writeback_centisecs 500
     write /proc/sys/vm/min_free_kbytes 4096
-    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/swappiness 10
     write /proc/sys/vm/vfs_cache_pressure 20
     write /proc/sys/vm/drop_caches 3
 
