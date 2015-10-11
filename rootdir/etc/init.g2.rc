@@ -86,6 +86,7 @@ on charger-fs
 
 on fs
     mount_all ./fstab.g2
+    swapon_all ./fstab.g2
     restorecon_recursive /sns
     restorecon_recursive /mpt
     setprop ro.crypto.fuse_sdcard true
