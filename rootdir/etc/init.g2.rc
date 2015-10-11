@@ -291,6 +291,12 @@ on boot
     #Swap only 1 page at a time
     write /proc/sys/vm/page-cluster 0
 
+    # Increase the default ksm sleep time, less cpu usage
+    write /sys/kernel/mm/ksm/sleep_millisecs 350
+
+    # Enable ksm
+    write /sys/kernel/mm/ksm/run 1
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
