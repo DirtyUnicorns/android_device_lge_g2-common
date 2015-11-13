@@ -429,11 +429,12 @@ on post-fs-data
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
     # Tap to wake
-    chown system radio /sys/devices/virtual/input/lge_touch/touch_gesture
-    chmod 0664 /sys/devices/virtual/input/lge_touch/touch_gesture
     #Make sure that 'Tap to Wake' is active on boot.
     write /sys/devices/virtual/input/lge_touch/touch_gesture 1
     write /sys/devices/virtual/input/lge_touch/firmware 1
+    chmod 0664 /sys/devices/virtual/input/lge_touch/touch_gesture
+    chown system radio /sys/devices/virtual/input/lge_touch/touch_gesture
+    chmod 0664 /sys/devices/virtual/input/lge_touch/firmware
 
 on charger
     trigger charger-fs
