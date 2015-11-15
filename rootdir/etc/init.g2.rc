@@ -78,7 +78,8 @@ on fs
     restorecon_recursive /mpt
 
     # Preload the BoringSSL wrapper
-    export LD_PRELOAD "/system/lib/libboringssl-compat.so:/system/lib/liblge.so"
+    export LD_PRELOAD "/system/lib/libboringssl-compat"
+    export LD_SHIM_LIBS /system/lib/libril.so|libril_shim.so
 
 on post-fs-data
     # Create directory used by bluetooth
