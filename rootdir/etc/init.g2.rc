@@ -42,8 +42,6 @@ on early-init
     write /sys/class/leds/lcd-backlight/brightness 130
 
 on init
-    # Preload the BoringSSL wrapper
-    export LD_PRELOAD "/system/lib/libboringssl-compat.so:/system/lib/liblge.so"
 
     mkdir /persist 0771 system system
     mkdir /factory 0775 system system
@@ -66,6 +64,9 @@ on fs
     swapon_all ./fstab.g2
     restorecon_recursive /sns
     restorecon_recursive /mpt
+
+    # Preload the BoringSSL wrapper
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so:/system/lib/liblge.so"
 
 on post-fs-data
     # Create directory used by bluetooth
