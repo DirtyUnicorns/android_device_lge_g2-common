@@ -49,8 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
-    mm.enable.smoothstreaming=true \
-    mm.enable.qcom_parser=3310129
+    mm.enable.smoothstreaming=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
