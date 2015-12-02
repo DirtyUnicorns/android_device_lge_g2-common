@@ -322,7 +322,13 @@ service audiod /system/bin/audiod
     user system
     group system
 
-service charger /sbin/charger_g2
+service baseband-sh /system/bin/sh /init.baseband.sh
+    class late_start
+    user root
+    oneshot
+    disabled
+    
+service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
