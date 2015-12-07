@@ -53,12 +53,8 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
-    #Create a Nice place for zram
-    write /sys/block/zram0/comp_algorithm lz4
-
 on fs
     mount_all ./fstab.g2
-    swapon_all ./fstab.g2
     restorecon_recursive /persist
     restorecon_recursive /persist-lg
     restorecon_recursive /sns
@@ -279,9 +275,6 @@ on boot
 
     chown system wifi /sys/module/bcmdhd/parameters/firmware_path
     chmod 0640 /sys/module/bcmdhd/parameters/firmware_path
-
-    #Swap only 1 page at a time
-    write /proc/sys/vm/page-cluster 0
 
     # Increase the default ksm sleep time, less cpu usage
     write /sys/kernel/mm/ksm/sleep_millisecs 350
