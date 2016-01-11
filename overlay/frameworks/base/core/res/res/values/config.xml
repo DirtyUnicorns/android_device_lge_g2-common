@@ -32,8 +32,8 @@
     <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Does the notification LED support multiple colors?
-         Used to decide if the user can change the colors
-    <bool name="config_multiColorNotificationLed">true</bool> -->
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
 
     <!-- Default value for led color when battery is low on charge -->
     <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
@@ -44,11 +44,11 @@
     <!-- Default value for led color when battery is fully charged -->
     <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
 
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option
-    <bool name="config_intrusiveBatteryLed">true</bool> -->
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors
-    <bool name="config_multiColorBatteryLed">true</bool>-->
+    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors-->
+    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
@@ -352,9 +352,9 @@
 
     <!-- Enable the option to check proximity sensor when deciding whether to
          turn the screen on
-         NOTE ! - Enable for devices that have a fast response proximity sensor
+         NOTE ! - Enable for devices that have a fast response proximity sensor-->
     <bool name="config_proximityCheckOnWake">true</bool>
-    <integer name="config_proximityCheckTimeout">400</integer>-->
+    <integer name="config_proximityCheckTimeout">400</integer>
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
