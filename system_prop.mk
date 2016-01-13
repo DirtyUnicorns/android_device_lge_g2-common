@@ -117,7 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.supplicant_scan_interval=20 \
+    wifi.supplicant_scan_interval=120 \
     wifi.interface=wlan0
 
 # Background app control
