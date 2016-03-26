@@ -142,11 +142,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lights.msm8974
 
-# Offmode Charging
-PRODUCT_PACKAGES += \
-    charger_res_g2 \
-    charger_g2
-
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
