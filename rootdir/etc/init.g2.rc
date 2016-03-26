@@ -328,7 +328,7 @@ service baseband-sh /system/bin/sh /init.baseband.sh
     oneshot
     disabled
     
-service charger /sbin/healthd -c
+service charger /sbin/charger_g2
     class charger
     critical
     seclabel u:r:healthd:s0
