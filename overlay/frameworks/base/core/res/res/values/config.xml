@@ -379,4 +379,7 @@
          that can be set by the user. -->
 
     <integer name="config_screenBrightnessDoze">17</integer>
+
+    <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 </resources>
