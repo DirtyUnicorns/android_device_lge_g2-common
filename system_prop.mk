@@ -119,6 +119,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=120 \
+    ro.data.large_tcp_window_size=true \
     wifi.interface=wlan0
 
 # Background app control
