@@ -49,9 +49,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.multiple.enabled=false \
     audio.offload.pcm.16bit.enable=true \
     audio.offload.pcm.24bit.enable=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    tunnel.audio.encode=true
+    audio.offload.video=true \
+    av.streaming.offload.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
