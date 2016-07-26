@@ -385,4 +385,13 @@
 
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- Proximity check on screen on -->
+    <bool name="config_proximityCheckOnWake">true</bool>
+
+    <!-- Proximity check timeout -->
+    <integer name="config_proximityCheckTimeout">100</integer>
+
+    <!-- Proximity check on screen on default -->
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 </resources>
