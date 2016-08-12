@@ -17,7 +17,14 @@
 <!-- Telecomm resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
+<<<<<<< HEAD
+=======
+
+    <!-- Flag indicating if the speed up audio on mt call code should be executed
+    <bool name="config_speed_up_audio_on_mt_calls">true</bool> -->
+>>>>>>> ee2a817... g2-common: build and consolidate doze package
 
     <!-- Flag indicating if the tty is enabled -->
     <bool name="tty_enabled">true</bool>
+
 </resources>

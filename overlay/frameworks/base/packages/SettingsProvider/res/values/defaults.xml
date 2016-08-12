@@ -17,8 +17,10 @@
  */
 -->
 <resources>
+
     <!-- Set the automatic brightness mode on by default -->
     <bool name="def_screen_brightness_automatic_mode">true</bool>
+
     <integer name="def_screen_off_timeout">30000</integer>
 
     <bool name="def_install_non_market_apps">true</bool>
