@@ -45,6 +45,7 @@ on early-init
     write /sys/class/leds/lcd-backlight/brightness 130
 
 on init
+    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libril.so|libril_shim.so
 
     mkdir /persist 0771 system system
     mkdir /factory 0775 system system
@@ -72,7 +73,6 @@ on fs
     chmod 0644 /persist/sensors/sensors_settings
     chown system root /persist/sensors/sensors_settings
 
-    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libril.so|libril_shim.so
 
 on post-fs-data
     # Create directory used by bluetooth
@@ -156,6 +156,7 @@ on early-boot
     write /sys/module/lowmemorykiller/parameters/lmk_fast_run 0
 
 on boot
+    mkdir /dev/socket/netmgr 0750 radio radio
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -398,6 +399,7 @@ service sensors /system/bin/sensors.qcom
 service set_baseband /system/bin/sh /system/etc/set_baseband.sh
     class late_start
     user root
+    seclabel u:r:set_baseband:s0
     oneshot
     disabled
 
