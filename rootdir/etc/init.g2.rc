@@ -336,13 +336,7 @@ service audiod /system/bin/audiod
     user system
     group system
 
-service baseband-sh /system/bin/sh /init.baseband.sh
-    class late_start
-    user root
-    oneshot
-    disabled
-
-service charger /sbin/healthd -c
+service charger /sbin/charger_g2
     class charger
     critical
     seclabel u:r:healthd:s0
