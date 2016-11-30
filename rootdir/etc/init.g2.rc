@@ -365,7 +365,7 @@ service loc_launcher /system/bin/loc_launcher
 service mpdecision /system/bin/mpdecision  --decision_ms 3000 --poll_ms 5000
    class late_start
    user root
-   group root system
+   group root system readproc
 
 service netmgrd /system/bin/netmgrd
     class main
