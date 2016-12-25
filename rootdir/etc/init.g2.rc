@@ -347,11 +347,10 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /system/bin/mpdecision  --decision_ms 3000 --poll_ms 5000
    class late_start
    user root
    group root system readproc
-   disabled
 
 service netmgrd /system/bin/netmgrd
     class main
