@@ -25,7 +25,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
-USE_CLANG_PLATFORM_BUILD := true
 ARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Krait optimizations
