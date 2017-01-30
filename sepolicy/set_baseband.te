@@ -8,3 +8,4 @@ allow set_baseband firmware_file:file r_file_perms;
 allow set_baseband shell_exec:file { entrypoint read getattr };
 allow set_baseband toolbox_exec:file { execute_no_trans open read getattr execute };
 unix_socket_connect(set_baseband, property, init)
+allow set_baseband shell_exec:file rx_file_perms;
