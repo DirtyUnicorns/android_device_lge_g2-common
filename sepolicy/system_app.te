@@ -1,1 +1,8 @@
 allow system_app baseband_prop:file r_file_perms;
+allow system_app media_rw_data_file:dir search;
+allow system_app media_rw_data_file:dir write;
+allow system_app media_rw_data_file:dir add_name;
+allow system_app media_rw_data_file:dir { read open add_name };
+allow system_app media_rw_data_file:dir create;
+allow system_app media_rw_data_file:file create;
+allow system_app media_rw_data_file:file { write open };

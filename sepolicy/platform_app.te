@@ -1,0 +1,1 @@
+allow platform_app media_rw_data_file:lnk_file getattr;
