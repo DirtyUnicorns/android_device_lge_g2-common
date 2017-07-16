@@ -19,11 +19,6 @@
 # IR Blaster
 /dev/ttyHSL1                                        u:object_r:cir_device:s0
 
-# MPdecision
-/data/system/default_values                         u:object_r:mpctl_data_file:s0
-/dev/socket/mpctl                                   u:object_r:mpctl_socket:s0
-/dev/socket/mpdecision(/.*)?                        u:object_r:mpctl_socket:s0
-
 # NFC
 /dev/bcm2079x                                       u:object_r:nfc_device:s0
 

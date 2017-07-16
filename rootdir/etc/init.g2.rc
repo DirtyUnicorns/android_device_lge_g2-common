@@ -173,9 +173,6 @@ on boot
     # Allow QMUX daemon to assign port open wait time
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
 
-    # communicate with mpdecision and thermald
-    mkdir /dev/socket/mpdecision 2770 system system
-
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
 
@@ -345,11 +342,6 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
-
-service mpdecision /system/bin/mpdecision  --decision_ms 3000 --poll_ms 5000
-   class late_start
-   user root
-   group root system readproc
 
 service netmgrd /system/bin/netmgrd
     class main
